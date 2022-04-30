@@ -3,14 +3,18 @@ package com.mindorks.framework.mvvm.ui.main.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.mindorks.framework.mvvm.App
 import com.mindorks.framework.mvvm.data.model.User
-import com.mindorks.framework.mvvm.data.repository.MainRepository
+import com.mindorks.framework.mvvm.data.repository.Repository
 import com.mindorks.framework.mvvm.utils.Resource
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MainViewModel(private val mainRepository: MainRepository) : ViewModel() {
+@Singleton
+class MainViewModel @Inject constructor(val mainRepository: Repository) : ViewModel() {
 
     private val users = MutableLiveData<Resource<List<User>>>()
     private val compositeDisposable = CompositeDisposable()

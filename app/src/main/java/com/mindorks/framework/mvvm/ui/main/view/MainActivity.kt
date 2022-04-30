@@ -8,26 +8,27 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.mindorks.framework.mvvm.App
 import com.mindorks.framework.mvvm.R
+import com.mindorks.framework.mvvm.dagger.AppComponent
 import com.mindorks.framework.mvvm.data.api.ApiHelper
-import com.mindorks.framework.mvvm.data.api.ApiServiceImpl
 import com.mindorks.framework.mvvm.data.model.User
-import com.mindorks.framework.mvvm.ui.base.ViewModelFactory
 import com.mindorks.framework.mvvm.ui.main.adapter.MainAdapter
 import com.mindorks.framework.mvvm.ui.main.viewmodel.MainViewModel
 import com.mindorks.framework.mvvm.utils.Status
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var mainViewModel: MainViewModel
+    @Inject
+    lateinit var mainViewModel: MainViewModel
     private lateinit var adapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        (applicationContext as App).appComp().inject(this)
         setContentView(R.layout.activity_main)
         setupUI()
-        setupViewModel()
         setupObserver()
     }
 
@@ -69,10 +70,4 @@ class MainActivity : AppCompatActivity() {
         adapter.notifyDataSetChanged()
     }
 
-    private fun setupViewModel() {
-        mainViewModel = ViewModelProviders.of(
-            this,
-            ViewModelFactory(ApiHelper(ApiServiceImpl()))
-        ).get(MainViewModel::class.java)
-    }
 }
