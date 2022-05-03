@@ -8,7 +8,7 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.mindorks.framework.mvvm"
+        applicationId "com.audev.framework.mvvm"
         minSdkVersion 26
         targetSdkVersion 29
         versionCode 1
@@ -71,7 +71,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
-    implementation 'com.google.code.gson:gson:2.8.5'
 
 
 }
