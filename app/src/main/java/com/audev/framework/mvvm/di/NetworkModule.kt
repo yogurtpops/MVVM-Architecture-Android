@@ -13,10 +13,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
-/**
-Created by Prokash Sarkar on Tue, January 19, 2021
- **/
-
 @Module
 class NetworkModule {
 
